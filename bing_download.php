@@ -2,9 +2,10 @@
 
   $save_folder = 'Users/bing/';
   // rename this to your own folder name see below.
-  // 'Users/mine/bing/'
+  // 'Users/mine/bing/'  This folder must exist or it will give a fatal error.
+  // 'Users/mine/bing/'  Is a mac folder address change this for windows or linux
 
-  // /az/hprichbg/rb/GoldBridge_EN-GB5579326717_1920x1080.jpg
+  // /az/hprichbg/rb/GoldBridge_EN-GB5579326717_1920x1080.jpg  full image URL
 
   $url = 'https://www.bing.com';
   $ch = curl_init();
@@ -14,7 +15,7 @@
   $content = curl_exec($ch);
   //echo $content;
 
-  preg_match("!/az/hprichbg/rb/(.*?).jpg!",$content,$image_match);
+  preg_match("!/az/hprichbg/rb/(.*?).jpg!",$content,$image_match);  // taken part of image URL
   print_r($image_match);
   $image_url = $url.$image_match[0];  // full image url
   $image_name = $image_match[1].'.jpg';  // file name
